@@ -12,6 +12,8 @@ RUN npm run build
 
 FROM nginx
 
+COPY --from=builder /app/build /usr/share/nginx/html
+
 RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
      && chgrp -R 0 /etc/nginx \
      && chmod -R g+rwX /etc/nginx
@@ -21,7 +23,7 @@ RUN touch /var/run/nginx.pid && \
 
 USER nginx
 
-COPY --from=builder /app/build /usr/share/nginx/html
+EXPOSE 9090
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
