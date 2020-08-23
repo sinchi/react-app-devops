@@ -17,7 +17,7 @@ RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
      && chmod -R g+rwX /etc/nginx
 #     && rm /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 8081
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
