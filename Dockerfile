@@ -20,7 +20,7 @@ RUN chmod -R 777 /var/log/nginx /var/cache/nginx /var/run \
 
 COPY --from=builder /app/build /usr/share/nginx/html
 
-EXPOSE 8081
+EXPOSE 8080
 
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
 
